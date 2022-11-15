@@ -65,23 +65,28 @@ export function Task() {
 export function TaskComponent({ task, taskArray, setTaskArray, index }) {
 	const [taskStatus, setTaskStatus] = useState("");
 	const [taskSelected, setTaskSelected] = useState("bi-square");
+	const [colorText, setColorText] = useState("text-white");
+
+	function scratchTask() {
+		if (taskStatus == "") {
+			setTaskStatus("line-through");
+			setTaskSelected("bi-check-square");
+			setColorText("text-gray-400");
+		} else {
+			setTaskStatus("");
+			setTaskSelected("bi-square");
+			setColorText("text-white");
+		}
+	}
 
 	return (
 		<div className="flex justify-center items-center gap-4 mb-3">
-			<button
-				onClick={() => {
-					if (taskStatus == "") {
-						setTaskStatus("line-through");
-						setTaskSelected("bi-check-square");
-					} else {
-						setTaskStatus("");
-						setTaskSelected("bi-square");
-					}
-				}}
-			>
+			<button onClick={scratchTask}>
 				<i className={`bi ${taskSelected} text-orange-300`}></i>
 			</button>
-			<span className={`text-white w-full ${taskStatus}`}>{task}</span>
+			<span onClick={scratchTask} className={`${colorText} w-full ${taskStatus} cursor-pointer`}>
+				{task}
+			</span>
 			<button
 				onClick={() => {
 					const deleteTask = [...taskArray].filter((item, i) => i != index);
