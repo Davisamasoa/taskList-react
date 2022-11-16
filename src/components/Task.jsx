@@ -65,7 +65,7 @@ export function TaskComponent({ task, taskArray, setTaskArray, index }) {
 		if (taskStatus == "") {
 			setTaskStatus("line-through");
 			setTaskSelected("bi-check-square");
-			setColorText("text-gray-400");
+			setColorText("text-gray-500");
 		} else {
 			setTaskStatus("");
 			setTaskSelected("bi-square");
