@@ -49,13 +49,7 @@ export function Task() {
 
 			{task.map((item, index) => {
 				return (
-					<TaskComponent
-						key={`${index}${item}`}
-						task={item}
-						taskArray={task}
-						setTaskArray={setTask}
-						index={index}
-					/>
+					<TaskComponent key={`${item}`} task={item} taskArray={task} setTaskArray={setTask} index={index} />
 				);
 			})}
 		</div>
